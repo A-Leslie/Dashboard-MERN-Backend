@@ -18,7 +18,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/properties", propertyRouter);
-
 const startServer = async () => {
     try {
         connectDB(process.env.URI);
