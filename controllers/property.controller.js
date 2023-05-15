@@ -58,6 +58,15 @@ const getPropertyDetail = async (req, res) => {
     }
 };
 
+
+const getOneProperty = async(req, res) => {
+    const {id} = req.params
+    // get property
+    const property = await Property.findById(id)
+    if(!property)return res.status(400).send({message: 'Not found'})
+    return res.status(200).send({property})
+}
+
 const createProperty = async (req, res) => {
     try {
         const {
@@ -135,11 +144,17 @@ const deleteProperty = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+const bookProperty=async(req,res)=>{
+ res.json(" Hello") 
+}
+
 module.exports = {
     getAllProperties,
     getPropertyDetail,
     createProperty,
-    updateProperty,
     deleteProperty,
-   
+    updateProperty,
+    getOneProperty,
+    bookProperty,
+    
 };
